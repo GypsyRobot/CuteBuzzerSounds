@@ -15,7 +15,7 @@ init KEYWORD2
 initBuzzer KEYWORD2
 bendTones	KEYWORD2
 play	KEYWORD2
-_tone	KEYWORD2
+playTone	KEYWORD2
 bendTones	KEYWORD2
 
 #######################################
