@@ -14,22 +14,22 @@ void setup()
 
 void loop() 
 {
-  cute.playTone(NOTE_C5, 500, 50);
-  cute.playTone(NOTE_C5, 500, 50);
-  cute.playTone(NOTE_D5, 500, 50);
-  cute.playTone(NOTE_E5, 500, 50);
-  cute.playTone(NOTE_C5, 500, 50);
-  cute.playTone(NOTE_E5, 500, 50);
-  cute.playTone(NOTE_D5, 1000, 50);
+  cute.playTone(NOTE_C5, 200, 5);
+  cute.playTone(NOTE_C5, 200, 5);
+  cute.playTone(NOTE_D5, 200, 5);
+  cute.playTone(NOTE_E5, 200, 5);
+  cute.playTone(NOTE_C5, 200, 5);
+  cute.playTone(NOTE_E5, 200, 5);
+  cute.playTone(NOTE_D5, 400, 5);
 
-  cute.playTone(NOTE_C5, 500, 50);
-  cute.playTone(NOTE_C5, 500, 50);
-  cute.playTone(NOTE_D5, 500, 50);
-  cute.playTone(NOTE_E5, 500, 50);
-  cute.playTone(NOTE_C5, 1000, 50);
-  cute.playTone(NOTE_B4, 1000, 50);
+  cute.playTone(NOTE_C5, 200, 5);
+  cute.playTone(NOTE_C5, 200, 5);
+  cute.playTone(NOTE_D5, 200, 5);
+  cute.playTone(NOTE_E5, 200, 5);
+  cute.playTone(NOTE_C5, 400, 5);
+  cute.playTone(NOTE_B4, 400, 5);
 
-  cute.bendTones(NOTE_C5, NOTE_F5, 1.02, 500, 50);
+  cute.bendTones(NOTE_C5, NOTE_F5, 1.02, 20, 15);
 
-  delay(2000);
+  delay(10000);
 }
