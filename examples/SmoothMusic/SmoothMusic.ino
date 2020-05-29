@@ -20,7 +20,7 @@
 
  */
 
-#define BUZZER_PIN 5
+#define BUZZER_PIN 7
 
 void setup() 
 {
@@ -29,6 +29,6 @@ void setup()
 
 void loop() 
 {
-  cute.playSound(S_HAPPY);
+  cute.playSound(S_CONFUSED);
   delay(2000);
 }

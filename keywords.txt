@@ -11,10 +11,10 @@ cute	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-init KEYWORD2
-initBuzzer KEYWORD2
+init        KEYWORD2
+initBuzzer  KEYWORD2
 bendTones	KEYWORD2
-play	KEYWORD2
+playSound	KEYWORD2
 playTone	KEYWORD2
 bendTones	KEYWORD2
 
