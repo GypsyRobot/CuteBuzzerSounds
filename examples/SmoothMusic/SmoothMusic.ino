@@ -2,22 +2,7 @@
 #include <CuteBuzzerSounds.h>
 
 /*
- * Author: Everton Ramires
- * More Tutorial: https://www.youtube.com/channel/UC7zG4YQJc8v-9jNGQknOx5Q
- * 
- * 
- 
- CURRENT SOUND OPTIONS: 
- (PT-BR)OPÇÕES ATUAIS DE SONS:
- 
- S_CONNECTION   S_DISCONNECTION S_BUTTON_PUSHED   
- S_MODE1        S_MODE2         S_MODE3     
- S_SURPRISE     S_OHOOH         S_OHOOH2    
- S_CUDDLY       S_SLEEPING      S_HAPPY     
- S_SUPER_HAPPY  S_HAPPY_SHORT   S_SAD       
- S_CONFUSED     S_FART1         S_FART2     
- S_FART3        S_JUMP 20
-
+ * Author: James Stenquist
  */
 
 #define BUZZER_PIN 7
@@ -29,6 +14,22 @@ void setup()
 
 void loop() 
 {
-  cute.playSound(S_CONFUSED);
+  cute.playTone(NOTE_C5, 500, 50);
+  cute.playTone(NOTE_C5, 500, 50);
+  cute.playTone(NOTE_D5, 500, 50);
+  cute.playTone(NOTE_E5, 500, 50);
+  cute.playTone(NOTE_C5, 500, 50);
+  cute.playTone(NOTE_E5, 500, 50);
+  cute.playTone(NOTE_D5, 1000, 50);
+
+  cute.playTone(NOTE_C5, 500, 50);
+  cute.playTone(NOTE_C5, 500, 50);
+  cute.playTone(NOTE_D5, 500, 50);
+  cute.playTone(NOTE_E5, 500, 50);
+  cute.playTone(NOTE_C5, 1000, 50);
+  cute.playTone(NOTE_B4, 1000, 50);
+
+  cute.bendTones(NOTE_C5, NOTE_F5, 1.02, 500, 50);
+
   delay(2000);
 }
