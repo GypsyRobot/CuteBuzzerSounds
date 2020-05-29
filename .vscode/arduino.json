@@ -1,5 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "sketch": "examples/SmoothMusic/SmoothMusic.ino",
-    "port": "/dev/ttyUSB0"
-}
