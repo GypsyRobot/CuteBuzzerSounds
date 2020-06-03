@@ -22,8 +22,10 @@ void CuteBuzzerSoundsClass::initBuzzer(int aBuzzerPin) {
 ///////////////////////////////////////////////////////////////////
 
 
-void CuteBuzzerSoundsClass::playTone (float noteFrequency, long noteDuration, int silentDuration){
-  if(silentDuration==0) {silentDuration=1;}
+void CuteBuzzerSoundsClass::playTone (float noteFrequency, long noteDuration, int silentDuration=1){
+  if(silentDuration==0) {
+    silentDuration = 1;
+  }
 
     #if defined(ESP32)
   ledcWriteTone(ledc_channel, noteFrequency);
@@ -36,6 +38,16 @@ void CuteBuzzerSoundsClass::playTone (float noteFrequency, long noteDuration, in
 
   delay(silentDuration);
 }
+
+//currently psyeudo code
+void CuteBuzzerSoundsClass::toneWithVolume(float noteFrequency, long noteDuration, int volume) {
+  /// create quiet so the tone sounds less annoying and volume can be managed
+  while (noteDuration > currentLength) {
+    playTone(note, noteDuration/volume, noteDuration/1/volume);
+    currentLength = location;
+  }
+}
+
 
 
 void CuteBuzzerSoundsClass::bendTones (float initFrequency, float finalFrequency, float prop, long noteDuration, int silentDuration){
