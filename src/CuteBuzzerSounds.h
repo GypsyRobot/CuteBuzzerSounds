@@ -16,7 +16,7 @@ void init(int buzzerPin);
 void initBuzzer(int buzzerPin);
 
 // Sounds
-void playTone (float noteFrequency, long noteDuration, int silentDuration);
+void playTone (float noteFrequency, long noteDuration, int silentDuration, bool isMicro=false);
 void toneWithVolume(float noteFrequency, long noteDuration, int volume);
 void bendTones (float initFrequency, float finalFrequency, float prop, long noteDuration, int silentDuration);
 void playSound(int soundName);

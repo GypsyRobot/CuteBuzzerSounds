@@ -22,7 +22,7 @@ void CuteBuzzerSoundsClass::initBuzzer(int aBuzzerPin) {
 ///////////////////////////////////////////////////////////////////
 
 
-void CuteBuzzerSoundsClass::playTone (float noteFrequency, long noteDuration, int silentDuration=1){
+void CuteBuzzerSoundsClass::playTone(float noteFrequency, long noteDuration, int silentDuration, bool isSilentMicro=false) {
   if(silentDuration==0) {
     silentDuration = 1;
   }
@@ -36,15 +36,25 @@ void CuteBuzzerSoundsClass::playTone (float noteFrequency, long noteDuration, in
   delay(noteDuration);     // milliseconds
     #endif
 
-  delay(silentDuration);
+  if (isSilentMicro == false) {
+    delay(silentDuration);
+  } else {
+    delayMicroseconds(10);
+  }
 }
 
-//currently psyeudo code
+/// create quiet so the tone sounds less annoying and volume can be managed
+/// currently pseudo code
 void CuteBuzzerSoundsClass::toneWithVolume(float noteFrequency, long noteDuration, int volume) {
-  /// create quiet so the tone sounds less annoying and volume can be managed
-  while (noteDuration > currentLength) {
-    playTone(note, noteDuration/volume, noteDuration/1/volume);
-    currentLength = location;
+  int numberOfDelays = 10; //unknown magic number since it may not matter, test later
+  int i = 0;
+  int delayTime = 1;
+
+  while (i < numberOfDelays) {
+    i++;
+    int tempNoteDuration = noteDuration/numberOfDelays - delayTime;
+    CuteBuzzerSoundsClass::playTone(noteFrequency, tempNoteDuration, delayTime, true);
+
   }
 }
 
