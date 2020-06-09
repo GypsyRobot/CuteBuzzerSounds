@@ -39,22 +39,21 @@ void CuteBuzzerSoundsClass::playTone(float noteFrequency, long noteDuration, int
   if (isSilentMicro == false) {
     delay(silentDuration);
   } else {
-    delayMicroseconds(10);
+     delayMicroseconds(silentDuration);
   }
 }
 
 /// create quiet so the tone sounds less annoying and volume can be managed
 /// currently pseudo code
 void CuteBuzzerSoundsClass::toneWithVolume(float noteFrequency, long noteDuration, int volume) {
-  int numberOfDelays = 10; //unknown magic number since it may not matter, test later
+  int numberOfDelays = 7; //unknown magic number since it may not matter, test later
   int i = 0;
-  int delayTime = 1;
+  int delayTime = 0;
 
   while (i < numberOfDelays) {
-    i++;
-    int tempNoteDuration = noteDuration/numberOfDelays - delayTime;
-    CuteBuzzerSoundsClass::playTone(noteFrequency, tempNoteDuration, delayTime, true);
-
+     i++;
+     int tempNoteDuration = noteDuration/numberOfDelays - delayTime;
+     CuteBuzzerSoundsClass::playTone(noteFrequency+3*sin(i*.2)/5, tempNoteDuration, delayTime, true);
   }
 }
 

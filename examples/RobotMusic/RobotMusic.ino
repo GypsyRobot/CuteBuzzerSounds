@@ -31,13 +31,23 @@ void loop()
 
   cute.bendTones(NOTE_C5, NOTE_F5, 1.02, 20, 15);
 
-  cute.toneWithVolume(NOTE_B5, 800, 10);
-  cute.toneWithVolume(NOTE_A5, 800, 10);
-  cute.toneWithVolume(NOTE_G5, 800, 10);
-  cute.toneWithVolume(NOTE_A5, 800, 10);
-  cute.toneWithVolume(NOTE_B5, 800, 10);
-  cute.toneWithVolume(NOTE_B5, 800, 10);
-  cute.toneWithVolume(NOTE_B5, 2400, 10);
+  int tempo = 500;
+
+  cute.toneWithVolume(NOTE_B5, tempo, 10);
+  cute.toneWithVolume(NOTE_A5, tempo, 10);
+  cute.toneWithVolume(NOTE_G5, tempo, 10);
+  cute.toneWithVolume(NOTE_A5, tempo, 10);
+  cute.toneWithVolume(NOTE_B5, tempo, 10);
+  cute.toneWithVolume(NOTE_B5, tempo, 10);
+  cute.toneWithVolume(NOTE_B5, tempo*2, 10);
+
+  cute.toneWithVolume(NOTE_A5, tempo, 10);
+  cute.toneWithVolume(NOTE_A5, tempo, 10);
+  cute.toneWithVolume(NOTE_A5, tempo*2, 10);
+  cute.toneWithVolume(NOTE_B5, tempo, 10);
+  cute.toneWithVolume(NOTE_D6, tempo, 10);
+  cute.toneWithVolume(NOTE_D6, tempo*2, 10);
+
 
   delay(10000);
 }
