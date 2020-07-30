@@ -31,22 +31,23 @@ void loop()
 
   cute.bendTones(NOTE_C5, NOTE_F5, 1.02, 20, 15);
 
-  int tempo = 500;
+  int tempo = 50;
+  int silent =450;
 
-  cute.toneWithVolume(NOTE_B5, tempo, 10);
-  cute.toneWithVolume(NOTE_A5, tempo, 10);
-  cute.toneWithVolume(NOTE_G5, tempo, 10);
-  cute.toneWithVolume(NOTE_A5, tempo, 10);
-  cute.toneWithVolume(NOTE_B5, tempo, 10);
-  cute.toneWithVolume(NOTE_B5, tempo, 10);
-  cute.toneWithVolume(NOTE_B5, tempo*2, 10);
+  cute.playTone(NOTE_B5, tempo, silent);
+  cute.playTone(NOTE_A5, tempo, silent);
+  cute.playTone(NOTE_G5, tempo, silent);
+  cute.playTone(NOTE_A5, tempo, silent);
+  cute.playTone(NOTE_B5, tempo, silent);
+  cute.playTone(NOTE_B5, tempo, silent);
+  cute.playTone(NOTE_B5, tempo*2, silent);
 
-  cute.toneWithVolume(NOTE_A5, tempo, 10);
-  cute.toneWithVolume(NOTE_A5, tempo, 10);
-  cute.toneWithVolume(NOTE_A5, tempo*2, 10);
-  cute.toneWithVolume(NOTE_B5, tempo, 10);
-  cute.toneWithVolume(NOTE_D6, tempo, 10);
-  cute.toneWithVolume(NOTE_D6, tempo*2, 10);
+  cute.playTone(NOTE_A5, tempo, silent);
+  cute.playTone(NOTE_A5, tempo, silent);
+  cute.playTone(NOTE_A5, tempo*2, silent);
+  cute.playTone(NOTE_B5, tempo, silent);
+  cute.playTone(NOTE_D6, tempo, silent);
+  cute.playTone(NOTE_D6, tempo*2, silent);
 
 
   delay(10000);
