@@ -22,8 +22,10 @@ void CuteBuzzerSoundsClass::initBuzzer(int aBuzzerPin) {
 ///////////////////////////////////////////////////////////////////
 
 
-void CuteBuzzerSoundsClass::_tone (float noteFrequency, long noteDuration, int silentDuration){
-  if(silentDuration==0) {silentDuration=1;}
+void CuteBuzzerSoundsClass::playTone(float noteFrequency, long noteDuration, int silentDuration, bool isMicro) {
+  if(silentDuration==0) {
+    silentDuration = 1;
+  }
 
     #if defined(ESP32)
   ledcWriteTone(ledc_channel, noteFrequency);
@@ -34,8 +36,27 @@ void CuteBuzzerSoundsClass::_tone (float noteFrequency, long noteDuration, int s
   delay(noteDuration);     // milliseconds
     #endif
 
-  delay(silentDuration);
+  if (isMicro == false) {
+    delay(silentDuration);
+  } else {
+     delayMicroseconds(silentDuration);
+  }
 }
+
+/// create quiet so the tone sounds less annoying and volume can be managed
+/// currently pseudo code
+void CuteBuzzerSoundsClass::toneWithVolume(float noteFrequency, long noteDuration, int volume) {
+  int numberOfDelays = 7; //unknown magic number since it may not matter, test later
+  int i = 0;
+  int delayTime = 0;
+
+  while (i < numberOfDelays) {
+     i++;
+     int tempNoteDuration = noteDuration/numberOfDelays - delayTime;
+     CuteBuzzerSoundsClass::playTone(noteFrequency+3*sin(i*.2)/5, tempNoteDuration, delayTime, true);
+  }
+}
+
 
 
 void CuteBuzzerSoundsClass::bendTones (float initFrequency, float finalFrequency, float prop, long noteDuration, int silentDuration){
@@ -49,31 +70,31 @@ void CuteBuzzerSoundsClass::bendTones (float initFrequency, float finalFrequency
   if(initFrequency < finalFrequency)
   {
     for (int i=initFrequency; i<finalFrequency; i=i*prop) {
-      _tone(i, noteDuration, silentDuration);
+      playTone(i, noteDuration, silentDuration);
     }
 
   } else{
 
     for (int i=initFrequency; i>finalFrequency; i=i/prop) {
-      _tone(i, noteDuration, silentDuration);
+      playTone(i, noteDuration, silentDuration);
     }
   }
 }
 
 
-void CuteBuzzerSoundsClass::play(int soundName){
+void CuteBuzzerSoundsClass::playSound(int soundName){
   switch(soundName) {
 
   case S_CONNECTION:
-    _tone(NOTE_E5,50,30);
-    _tone(NOTE_E6,55,25);
-    _tone(NOTE_A6,60,10);
+    playTone(NOTE_E5,50,30);
+    playTone(NOTE_E6,55,25);
+    playTone(NOTE_A6,60,10);
     break;
 
   case S_DISCONNECTION:
-    _tone(NOTE_E5,50,30);
-    _tone(NOTE_A6,55,25);
-    _tone(NOTE_E6,50,60);
+    playTone(NOTE_E5,50,30);
+    playTone(NOTE_A6,55,25);
+    playTone(NOTE_E6,50,60);
     break;
 
   case S_BUTTON_PUSHED:
@@ -91,9 +112,9 @@ void CuteBuzzerSoundsClass::play(int soundName){
     break;
 
   case S_MODE3:
-    _tone(NOTE_E6,50,100);   //D6
-    _tone(NOTE_G6,50,80);    //E6
-    _tone(NOTE_D7,300,0);    //G6
+    playTone(NOTE_E6,50,100);   //D6
+    playTone(NOTE_G6,50,80);    //E6
+    playTone(NOTE_D7,300,0);    //G6
     break;
 
   case S_SURPRISE:
@@ -111,7 +132,7 @@ void CuteBuzzerSoundsClass::play(int soundName){
     delay(200);
 
     for (int i=880; i<2000; i=i*1.04) {
-      _tone(NOTE_B5,5,10);
+      playTone(NOTE_B5,5,10);
     }
     break;
 
@@ -120,7 +141,7 @@ void CuteBuzzerSoundsClass::play(int soundName){
     delay(200);
 
     for (int i=1880; i<3000; i=i*1.03) {
-      _tone(NOTE_C6,10,10);
+      playTone(NOTE_C6,10,10);
     }
     break;
 
@@ -179,7 +200,7 @@ void CuteBuzzerSoundsClass::play(int soundName){
     // This is funny but very experimental
     for (int i = 0; i < 203; i++) {         //203 is the total number of music notes in the song
       int wait = duration[i] * songspeed;
-      _tone( notes[i], wait, 0);          //tone(pin,frequency,duration)
+      playTone( notes[i], wait, 0);          //tone(pin,frequency,duration)
     }
     break;
 
